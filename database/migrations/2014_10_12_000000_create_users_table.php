@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use phpDocumentor\Reflection\Types\Nullable;
 
 return new class extends Migration
 {
@@ -25,7 +26,7 @@ return new class extends Migration
             $table->date("tanggal_lahir");
             $table->string("tempat_lahir");
             $table->string("tamatan_pendidikan");
-            $table->string("cv");
+            $table->string("foto");
             $table->integer("is_admin")->default(0);
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();

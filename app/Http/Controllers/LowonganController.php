@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kategori;
+use App\Models\Kota;
 use Illuminate\Http\Request;
 use App\Models\Lowongan;
 
@@ -12,10 +14,19 @@ class LowonganController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+       $Lowongan =  Lowongan::all();
+       if ($request->get('jurusan') && $request->get('kota')) {
+           $jurusan = $request->jurusan;
+           $kota = $request->kota;
+           $Lowongan = Lowongan::where('id_kategori',$jurusan)->where('id_kota',$kota)->get();
+            } else {
+            }
         return view("lowongan.index", [
-            "lowongan" => Lowongan::all(),
+            "lowongan" => $Lowongan,
+            "kategori" => Kategori::all(),
+            "kota" => Kota::all(),
         ]);
     }
 
@@ -48,7 +59,7 @@ class LowonganController extends Controller
      */
     public function show($id)
     {
-       
+
         return view("lowongan.show", [
             "lowongan" => Lowongan::where("id", $id)->first(),
         ]);

@@ -10,8 +10,8 @@ class LoginController extends Controller
 {
     public function authenticate(Request $request){
         $user = [
-            "email" => $request->email,
-            "password" => $request->password
+            "email" => $request->emailLogin,
+            "password" => $request->passwordLogin
         ];
 
         if(Auth::attempt($user)){

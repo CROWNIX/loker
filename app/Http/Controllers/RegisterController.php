@@ -40,7 +40,6 @@ class RegisterController extends Controller
         if(count($checkEmail) > 0){
             return redirect('/')->with('error', "Email telah terdaftar");
         }
-
         $user = new User();
         $user->username = $request->username;
         $user->email = $request->email;
@@ -52,8 +51,14 @@ class RegisterController extends Controller
         $user->tanggal_lahir = $request->tanggal_lahir;
         $user->tempat_lahir = $request->tempat_lahir;
         $user->tamatan_pendidikan = $request->tamatan_pendidikan;
-        if($request->file("gambar")){
-            $user->cv = $request->file("gambar")->store("cv");
+
+        if(!$request->file('foto')){
+            if($request->jenis_kelamin == 'perempuan'){
+                $user->foto = 'cewek.jpeg';
+            }
+            elseif($request->jenis_kelamin == 'laki-laki'){
+                $user->foto = 'cowok.jpeg';
+            }
         }
 
         $user->save();

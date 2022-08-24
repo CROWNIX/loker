@@ -2,10 +2,11 @@
 
 @section('container')
 @if (session()->has("error"))
-		<script>
-			alert("Login Dulu")
-		</script>      
-    	@endif
+<script>
+    alert("Login Dulu")
+
+</script>
+@endif
 <style>
     .card {
         position: relative;
@@ -14,6 +15,7 @@
         border-radius: 6px;
         width: 100%;
         background: rgb(231 230 255) !important;
+
     }
 
     .card::before {
@@ -41,7 +43,7 @@
         text-align: left;
         font-size: 19px;
         color: #333;
-        height: 4.5rem;
+        height: 6.5rem;
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
@@ -78,7 +80,7 @@
         color: #337ab7;
         font-size: 20px;
         text-transform: uppercase;
-        height: 5rem;
+        height: 6.5rem;
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
@@ -114,7 +116,9 @@
             font-size: 10px;
         }
     }
+
 </style>
+
 <section class="about-part service-part">
     <div class="container">
         <div class="about-part-details text-center">
@@ -123,34 +127,28 @@
                 <div class="breadcrumbs">
                     <div class="container">
                         <ol class="breadcrumb">
-                            <form method="POST" action="" class="form-inline">
+                            <form method="GET" class="form-inline">
                                 <div class="row">
                                     <div class="form-group mb-2">
-                                       <!--  <select name="s_jurusan" id="s_jurusan" class="form-control" required>
-                                            <option value="">Kategori Lowongan</option>
-                                            {{-- <?php
-                                            $kategori = mysqli_query($connect, 'SELECT * FROM kategori');
-                                            while ($x = mysqli_fetch_assoc($kategori)) {
-                                            ?>
-                                                <option value="<?php echo $x['id_kategori'] ?>">
-                                                    <?php echo $x['nama_kategori'] ?>
-                                                </option>
-                                            <?php } ?> --}}
-                                        </select> -->
+                                        <select name="jurusan" class="filter_nama" required>
+                                            <option value="">Lowongan</option>
+                                            @foreach ($kategori as $x)
+                                            <option value="{{ $x->id }}" {{ request('jurusan') == $x->id ? 'selected' : '' }}>
+                                                {{ $x->nama_kategori }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                     <div class="form-group mb-2">
-                                       <!--  <select name="kota" id="s_jurusan" class="form-control" required>
+                                        <select name="kota" required class="filter_nama">
                                             <option value="">Kota</option>
-                                            {{-- <?php
-                                            $kota = mysqli_query($connect, 'SELECT * FROM kota');
-                                            while ($x = mysqli_fetch_assoc($kota)) {
-                                            ?>
-                                                <option value="<?php echo $x['id_kota'] ?>"><?php echo $x['nama_kota'] ?>
-                                                </option>
-                                            <?php } ?> --}}
-                                        </select> -->
+                                            @foreach ($kota as $x)
+                                            <option value="{{ $x->id }}" {{ request('kota') == $x->id ?"selected" :"" }}>
+                                                {{ $x->nama_kota }}
+                                            </option>
+                                            @endforeach
+                                        </select>
                                     </div>
-                                    <!-- <button class="btn btn-primary form-control" id="search" name="search" type="submit" onclick="search(document.getElementById('search').value)">Cari</button> -->
+                                    <button class="btn btn-primary form-control" type="submit">Cari</button>
 
                                 </div>
                             </form>
@@ -170,11 +168,11 @@
 
 </section>
 <div class="container">
-        <div class="row">
-            @foreach ($lowongan as $l)
-            <a href="lowongan-kerja/{{ $l->id }}" class="col-sm-12 col-lg-3 col-md-4" style="padding: 0 4px;">
-            <div >
-                <div class="card card-perusahaan"  style="cursor: pointer;">
+    <div class="row" style="padding-top:20px;">
+        @foreach ($lowongan as $l)
+        <a href="lowongan-kerja/{{ $l->id }}" class="col-sm-12 col-lg-3 col-md-4" style="padding: 0 4px;">
+            <div>
+                <div class="card card-perusahaan" style="cursor: pointer;">
                     <img src="{{ asset("storage/perusahaan/" . $l->foto) }}" class="img-responsive" style="height: 8rem; width: 16rem; object-fit:contain; padding: .30em; object-position: left;">
                     <div class="card-body">
                         <div class="nama">{{ $l->perusahaan->nama_perusahaan }}"; </div>
@@ -185,31 +183,8 @@
                     </div>
                 </div>
             </div>
-            </a>
-            @endforeach
-        </div>
+        </a>
+        @endforeach
     </div>
-    {{-- <div class="container">
-        <div class="row">
-            <?php while ($row = mysqli_fetch_assoc($q)) {
-                $id_pencari_kerja = $row['id_lowongan_kerja'];
-                $kota = $row['id_kota'];
-            ?>
-                <div class="col-sm-12 col-lg-3 col-md-4" style="padding: 0 4px;">
-                    <div class="card card-perusahaan" onclick="window.location.href = 'index.php?page=detail_loker&id=<?= $row['id_lowongan_kerja']; ?>'" style="cursor: pointer;">
-                        <img src="perusahaan/img/<?php echo "$row[foto]"; ?>" class="img-responsive" style="height: 8rem; width: 16rem; object-fit:contain; padding: .30em; object-position: left;">
-                        <div class="card-body">
-                            <div class="nama"><?php echo "$row[nama_perusahaan]"; ?></div>
-                            <div class="judul"><?php echo "$row[judul]"; ?></div>
-                            <div class="details">
-                                <?php echo "$row[nama_kategori]"; ?><br><?php echo "$row[nama_kota]"; ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        <?php }
-        } ?>
-        </div>
-    </div> --}}
-
+</div>
 @endsection
