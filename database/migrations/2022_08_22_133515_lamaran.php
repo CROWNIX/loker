@@ -19,9 +19,9 @@ return new class extends Migration
             $table->foreignId("id_lowongan_kerja");
             $table->date("tgl_lamaran");
             $table->string("status_lamaran");
-            $table->string("dokumen");
-            $table->string("tgl_interview"); 
-            $table->timestamps();  
+            $table->string('document');
+            $table->string("tgl_interview");
+            $table->timestamps();
         });
     }
 

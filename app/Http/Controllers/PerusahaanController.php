@@ -151,7 +151,7 @@ class PerusahaanController extends Controller
         if($checkPerusahaan){
             return back()->with("error", "Login Failed");
         }
-        
+
         $perusahaan = new Perusahaan();
         $perusahaan->nama_perusahaan = $request->nama_perusahaan;
         $perusahaan->email = $request->email;
@@ -176,7 +176,7 @@ class PerusahaanController extends Controller
     }
 
     public function tambahLowongan(Request $request){
-        
+
         $aac = date("Y-m-d ");
 
         $lowongan = new Lowongan();
@@ -194,7 +194,7 @@ class PerusahaanController extends Controller
         $lowongan->save();
         return redirect("/perusahaan/lowongan")->with("success", "Lowongan berhasil ditambahkan");
 
-    }       
+    }
 
     public function lamaran(){
         $lowongan = Lowongan::where("id_perusahaan", session("id"))->get();
@@ -222,7 +222,7 @@ class PerusahaanController extends Controller
                 $interview[] = $checkLamaran;
             }
         }
-        
+
         return view("perusahaan.interview.index", [
             "interview" => $interview,
         ]);

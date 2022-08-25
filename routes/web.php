@@ -57,6 +57,7 @@ Route::group(['prefix' => 'perusahaan'], function () {
 
 Route::resource("/lowongan-kerja", LowonganController::class);
 Route::resource("/lamaran", LamaranController::class);
+Route::get("/zip", [LamaranController::class,"zip"]);
 
 Route::post("/login", [LoginController::class, "authenticate"]);
 Route::post("/logout", [LoginController::class, "logout"]);

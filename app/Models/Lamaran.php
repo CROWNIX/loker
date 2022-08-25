@@ -19,7 +19,4 @@ class Lamaran extends Model
     public function lowongan(){
         return $this->belongsTo(Lowongan::class, "id_lowongan_kerja");
     }
-
-    
-
 }
