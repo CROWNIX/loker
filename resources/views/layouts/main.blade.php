@@ -155,6 +155,33 @@
 
     </script>
 
+    <script>
+        $(document).ready(function() {
+            $('#submit').click(function() {
+                let file_val = $('.file').val();
+                if (file_val == "") {
+                    alert("Please select file.");
+                    return false;
+                }
+
+            });
+
+            $(".addFile").click(function() {
+                $(".file_container").append("<p style='clear:both;'><input type='file' style='float:left;' name='document[]' class='file' multiple /> <button type='button' style='float:right;margin:5px;' class='deleteFile btn btn-danger' title='Delete file'><span class='glyphicon glyphicon-remove'></span> Delete file</button> </p>");
+
+            });
+            $('.file_container').on('click', '.deleteFile', function() {
+
+                $(this).parents('p').remove();
+
+            });
+
+
+        });
+
+    </script>
+
+
 
 </body>
 

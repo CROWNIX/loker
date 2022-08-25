@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
                 "tanggal_lahir" => "2022-08-30",
                 "tempat_lahir" => "tegal",
                 "tamatan_pendidikan" => "smk",
-                "foto" => "default.jpg",
+                "foto" => "cewek.jpeg",
                 "is_admin" => 1
             ],
             [
@@ -42,7 +42,7 @@ class UserSeeder extends Seeder
                 "tanggal_lahir" => "2022-08-30",
                 "tempat_lahir" => "tegal",
                 "tamatan_pendidikan" => "smk",
-                "foto" => "default.jpg",
+                "foto" => "cowok.jpeg",
                 "is_admin" => 0
             ],
         ];
