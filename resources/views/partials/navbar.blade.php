@@ -29,9 +29,8 @@
                     @csrf
                     <div class="form-group row has-success">
                         <label for="emailLogin" class="col-lg-4 col-form-label">Email</label>
-
                         <div class="col-lg-6">
-                            <input type="text" name="emailLogin" class="form-control" id="emailLogin" placeholder="Enter Email">
+                            <input type="email" name="emailLogin" class="form-control" id="emailLogin" placeholder="Enter Email">
 
                         </div>
                     </div>
@@ -133,32 +132,22 @@
 
                             </form>
                         </li> --}}
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                <div class="img-rounded profile-img"><img src="{{ asset("storage/user/". auth()->user()->foto) }}" style="border-radius: 50%;" alt="tidak ada poto"> </div>
+                        <li class="dropdown" style="background: none !important;">
+                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >
+                                <div class="img-rounded profile-img"><img src="{{ asset("storage/user/". auth()->user()->foto) }}" style="border-radius: 50%; height: 3rem;" alt="tidak ada poto"> </div>
                                 {{ auth()->user()->username}}
                                 <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li class="dropdown-header">Nav header</li>
-                                <li><a href="#">Separated link</a></li>
-                                <li><a href="#">One more separated link</a></li>
-                                <li>
+                                <li><a href="/user/profile">Profile</a></li>
+                                <li class="form-logout">
                                     <form action="/logout" method="post">
                                         @csrf
                                         <button type="submit">logout</button>
-
                                     </form>
                                 </li>
-
                             </ul>
-
                         </li>
-
 
                         @else
                         <li><a href="/pusat-informasi">Pusat Informasi</a></li>
