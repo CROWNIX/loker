@@ -54,6 +54,14 @@ Route::group(['prefix' => 'perusahaan'], function () {
     Route::get('/interview', [PerusahaanController::class, "interview"]);
 });
 
+Route::get("/user/profile", function(){
+    if(!auth()->check()){
+        return redirect("/");
+    }
+
+    return view("user.index");
+});
+
 
 Route::resource("/lowongan-kerja", LowonganController::class);
 Route::resource("/lamaran", LamaranController::class);

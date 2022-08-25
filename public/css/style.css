@@ -2056,7 +2056,38 @@ a:active.learn-btn{
 	color:#908edf;
 	border:1px solid #908edf;
 }
+
+
+.dropdown li a{
+	color: black !important;
+	margin-top: 0 !important;
+	padding: 1rem !important;
+}
+
+.dropdown li a:hover{
+	color: black !important;
+	padding: 1rem !important;
+	font-weight: normal !important;
+}
+
+.dropdown form button{
+	background: none;
+	border: none;
+	color: black;
+	padding: 1rem;
+	font-size: 1.1em;
+}
+
+.dropdown .form-logout:hover{
+	background-color: #f7f7f7 !important;
+	cursor: pointer;
+}
+
+
+
+
 /*-blog button-*/\
+
 
 /*pagination*/
 .pagination-part {
